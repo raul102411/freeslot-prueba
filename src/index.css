@@ -1,0 +1,263 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+/* Botones modernos sin borde */
+.fc .fc-button {
+  @apply bg-blue-600 text-white text-sm px-3 py-2 rounded-md hover:bg-blue-700 transition border-0 shadow-none;
+}
+
+/* Botón deshabilitado */
+.fc .fc-button:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Estilo del título (rango de fechas) */
+.fc-toolbar-title {
+  @apply text-base md:text-lg font-semibold text-gray-800 tracking-tight;
+}
+
+/* Encabezado del calendario */
+.fc-header-toolbar {
+  @apply flex items-center justify-between px-4 py-3 bg-white rounded-t-xl;
+}
+
+.fc-header-toolbar {
+  padding: 0px !important;
+  margin-bottom: -1px !important;
+}
+
+.fc-event-title {
+  font-size: 0.75rem !important; /* Tailwind equiv: text-sm */
+}
+
+.fc-event:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.fc-direction-ltr .fc-timegrid-col-events {
+  margin: 0px 20px 0px 0px !important;
+}
+
+.fc-v-event {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: block;
+}
+
+.fc-event-main {
+  display: flex !important;
+}
+
+.rounded {
+  width: 100%;
+}
+
+.fc-day-today {
+  background-color: white !important;
+}
+
+.fc-event[data-tipo='no_laborable'] {
+  background-color: #fecaca !important;
+}
+
+/* Z-index más alto que el default de background events */
+.fc .no-laborable-bg {
+  background-color: #fecaca !important;
+  z-index: 3 !important;
+  pointer-events: none;
+}
+
+.fc .bloqueado-bg {
+  background-color: #d1d5db !important;
+  z-index: 1 !important;
+  pointer-events: none;
+}
+
+.fc .fc-bg-event.no-laborable-bg {
+  background-color: rgba(255, 0, 0, 0.2) !important;
+  z-index: 3 !important;
+  pointer-events: none;
+}
+
+/* Festivos */
+.fc .festivo-bg {
+  background-color: #e5e7eb !important; /* gray-200 */
+  z-index: 1 !important;
+  pointer-events: none;
+}
+
+/* Ausencia aprobada */
+.fc .ausencia-aprobada-bg {
+  background-color: #e9d5ff !important; /* purple-200 */
+  z-index: 1 !important;
+  pointer-events: none;
+}
+
+/* Ausencia pendiente */
+.fc .ausencia-pendiente-bg {
+  background-color: #fef3c7 !important; /* yellow-100 */
+  z-index: 1 !important;
+  pointer-events: none;
+}
+
+/* Día no laborable */
+.fc .no-laborable-bg {
+  background-color: #fee2e2 !important; /* red-100 */
+  z-index: 1 !important;
+  pointer-events: none;
+}
+
+.fc .festivo-bg {
+  background-color: #e5e7eb !important; /* gray-200 */
+  z-index: 1 !important;
+  pointer-events: none;
+}
+
+.fc .ausencia-aprobada-bg {
+  background-color: #e9d5ff !important; /* purple-200 */
+  z-index: 1 !important;
+  pointer-events: none;
+}
+
+.fc .ausencia-pendiente-bg {
+  background-color: #fef3c7 !important; /* yellow-100 */
+  z-index: 1 !important;
+  pointer-events: none;
+}
+
+.fc-event.fase-atencion {
+  background-color: #3b82f6 !important; /* Azul */
+  color: white !important;
+  font-weight: 500;
+}
+
+.fc-bg-event.fase-descanso {
+  background-color: #dbeafe !important; /* Azul muy claro */
+  opacity: 0.6;
+}
+
+.react-calendar {
+  border: none !important;
+  border-radius: 0.75rem; /* opcional, si quieres mantener bordes suaves */
+  box-shadow: none; /* opcional, para quitar sombra si alguna lib la aplica */
+}
+
+/* En tu archivo de estilos globales (por ejemplo, styles/globals.css) */
+
+.react-calendar__month-view__days__day--weekend {
+  color: inherit !important; /* Evita que se ponga rojo */
+}
+
+@layer utilities {
+  @media (max-width: 640px) {
+    .fc .fc-timegrid-slot-lane {
+      @apply min-h-8; /* 2rem */
+    }
+    .fc .fc-timegrid-slot {
+      @apply h-8; /* 2rem */
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .fc .fc-timegrid-slot-lane {
+    min-height: 2rem !important;
+  }
+  .fc .fc-timegrid-slot {
+    height: 2rem !important;
+  }
+}
+
+input,
+select,
+textarea,
+button {
+  font-size: 16px;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
